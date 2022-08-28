@@ -1,0 +1,21 @@
+<div class="container">
+  <div>
+    <h1>Team Generator</h1>
+  </div>
+  <ul class="list">
+    <li *ngFor="let member of members">{{ member }}</li>
+  </ul>
+  <div class="add-members-container">
+    <input type="text" name="name" [(ngModel)]="name"  placeholder="Name">
+    <button type="submit" (click)="onClick()">Add</button>
+  </div>
+  <div class="input-container">
+    <input type="number" name="number" [(ngModel)]= "number" placeholder="Teams">
+    <button type="submit" (click)="onGenerate()">Generate</button>
+  </div>
+  <p *ngIf="errorMessage" class="error-msg">{{errorMessage}}</p>
+
+  <div *ngIf="teams.length" class="teams-container">
+    <app-teams *ngFor="let team of teams; let i = index" [team]="team" [index]="i"></app-teams>
+  </div>
+</div>
